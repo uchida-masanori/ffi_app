@@ -7,5 +7,12 @@
     // Remove from file watching
     "files.watcherExclude": {
       "**/.fvm": true
-    }
+    },
+    // パッケージのimport方法を自動で修正する設定
+    "[dart]": {
+      "editor.codeActionsOnSave": {
+          "source.fixAll": true,
+          "source.organizeImports": true,
+      }
+  },
 }
