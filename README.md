@@ -9,6 +9,7 @@
 
 プロジェクトは以下で作成している。  
 ※fvm前提  
+※大本はFlutterバージョン「3.3.9」で作成
 
 ```console
 $ fvm use stable --force
@@ -44,6 +45,9 @@ $ ./change_package_name.sh com.example.app
   
 処理が終わったら`change_package_name.sh`は消しておいてもいいかと思う。  
   
+## Flutterバージョン
+Flutterのバージョンを変更したい場合は[fvm_config.json](.fvm/fvm_config.json)を変更する。  
+
 ## Githubの設定
 
 - 案件のリポジトリを作成
