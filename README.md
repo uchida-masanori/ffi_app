@@ -43,6 +43,17 @@ $ chmod 755 change_package_name.sh
 $ ./change_package_name.sh com.example.app
 ```
   
+※注意  
+**元々のパッケージ名と近い内容で変更しようとすると、フォルダを再作成時に余計なファイルまで削除してしまいます。**  
+例)
+`jp.co.xxx.app` から `jp.co.yyy.app`の変更など  
+回避策として、全く違うパッケージ名に変更してからの処理してください。  
+  
+```console
+$ ./change_package_name.sh xxx.yyyy.bbb
+$ ./change_package_name.sh com.example.app
+```
+  
 処理が終わったら`change_package_name.sh`は消しておいてもいいかと思う。  
   
 ## Flutterバージョン
