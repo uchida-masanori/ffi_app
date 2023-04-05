@@ -9,7 +9,7 @@
 
 プロジェクトは以下で作成している。  
 ※fvm前提  
-※大本はFlutterバージョン「3.3.9」で作成
+※大本はFlutterバージョン「3.7.9」で作成
 
 ```console
 $ fvm use stable --force
@@ -116,6 +116,11 @@ $ chmod 755 ios/script/retrieve_dart_defines.sh
 開発環境の実行コマンド  
 ```console
 $ fvm flutter run --debug --dart-define=FLAVOR=dev
+```
+
+開発環境の実行コマンド（device_previewを使用）
+```console
+$ fvm flutter run --debug --dart-define=FLAVOR=dev --dart-define=PREVIEW=true
 ```
   
 本番環境の実行コマンド
