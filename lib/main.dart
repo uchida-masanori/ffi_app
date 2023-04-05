@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 import 'logger.dart';
@@ -7,7 +8,12 @@ void main() {
   const flavor = String.fromEnvironment('FLAVOR');
   logger.i('FLAVOR : $flavor');
 
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: const bool.fromEnvironment('PREVIEW'),
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -59,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
