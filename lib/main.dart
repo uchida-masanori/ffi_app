@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
-import 'logger.dart';
+import 'util/logger.dart';
 
 void main() {
   // Flavor を取得し Logging

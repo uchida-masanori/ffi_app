@@ -75,7 +75,18 @@ $ git remote -v
   
 あとは新しいリポジトリにpushできればOK  
   
+## 事前追加している実装
+
+[Dioの実装](./lib/api/)  
+
+元々の参考  
+https://github.com/KosukeSaigusa/flutterfire-commons/tree/main/packages/routing_with_riverpod/example  
   
+※ APIとのやりとりがない場合は削除推奨。  
+  
+また[base_response_data](./lib/api/model/base_response_data/base_response_data.dart)は要件によって変えた方がいいかもしれない。  
+※ 現状そのままmainにデータ入れている。「参考」の実装などでは「message」はどのAPIでも存在する想定で作成されている。
+
 以下README雛形
 
 ----------------------------------
