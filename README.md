@@ -9,7 +9,7 @@
 
 プロジェクトは以下で作成している。  
 ※fvm前提  
-※大本はFlutterバージョン「3.7.9」で作成
+※大本はFlutterバージョン「3.7.12」で作成
 
 ```console
 $ fvm use stable --force
@@ -115,7 +115,7 @@ VSCode用の設定は追加済みである。
 
 ### 環境分け
 環境は以下を参考に`dev`（開発）と`prod`（本番）で分けています。  
-[FlutterでDart-defineのみを使って開発環境と本番環境を分ける](https://zenn.dev/riscait/articles/separating-environments-in-flutter) 
+[FlutterでDart-define-from-fileを使って開発環境と本番環境を分ける](https://zenn.dev/riscait/articles/separating-environments-in-flutter) 
   
 iOSのbuildを実行するため、以下のスクリプトに実行権限を与えてください。  
 ```console
@@ -126,25 +126,20 @@ $ chmod 755 ios/script/retrieve_dart_defines.sh
 
 開発環境の実行コマンド  
 ```console
-$ fvm flutter run --debug --dart-define=FLAVOR=dev
-```
-
-開発環境の実行コマンド（device_previewを使用）
-```console
-$ fvm flutter run --debug --dart-define=FLAVOR=dev --dart-define=PREVIEW=true
+$ fvm flutter run --debug --dart-define-from-file=dart_defines/dev.json
 ```
   
 本番環境の実行コマンド
 ```console
-$ fvm flutter run --debug --dart-define=FLAVOR=prod
+$ fvm flutter run --debug --dart-define-from-file=dart_defines/prod.json
 ```
 
 ビルドコマンド
 ```console
 # Android
-$ flutter build appbundle --release --dart-define=FLAVOR=prod
+$ flutter build appbundle --release --dart-define-from-file=dart_defines/prod.json
 # iOS
-$ flutter build ipa --dart-define=FLAVOR=prod
+$ flutter build ipa --dart-define-from-file=dart_defines/prod.json
 ```
 
 ## 構成図

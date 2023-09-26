@@ -43,8 +43,8 @@ class ApiClient implements AbstractApiClient {
       );
       final baseResponseData = _parseResponse(response);
       return ResponseResult.success(data: baseResponseData);
-    } on DioError catch (dioError) {
-      final exception = _handleDioError(dioError);
+    } on DioException catch (dioException) {
+      final exception = _handleDioException(dioException);
       return ResponseResult.failure(
         message: exception.toString(),
       );
@@ -88,8 +88,8 @@ class ApiClient implements AbstractApiClient {
       );
       final baseResponseData = _parseResponse(response);
       return ResponseResult.success(data: baseResponseData);
-    } on DioError catch (dioError) {
-      final exception = _handleDioError(dioError);
+    } on DioException catch (dioException) {
+      final exception = _handleDioException(dioException);
       return ResponseResult.failure(
         message: exception.toString(),
       );
@@ -133,8 +133,8 @@ class ApiClient implements AbstractApiClient {
       );
       final baseResponseData = _parseResponse(response);
       return ResponseResult.success(data: baseResponseData);
-    } on DioError catch (dioError) {
-      final exception = _handleDioError(dioError);
+    } on DioException catch (dioException) {
+      final exception = _handleDioException(dioException);
       return ResponseResult.failure(
         message: exception.toString(),
       );
@@ -178,8 +178,8 @@ class ApiClient implements AbstractApiClient {
       );
       final baseResponseData = _parseResponse(response);
       return ResponseResult.success(data: baseResponseData);
-    } on DioError catch (dioError) {
-      final exception = _handleDioError(dioError);
+    } on DioException catch (dioException) {
+      final exception = _handleDioException(dioException);
       return ResponseResult.failure(
         message: exception.toString(),
       );
@@ -223,8 +223,8 @@ class ApiClient implements AbstractApiClient {
       );
       final baseResponseData = _parseResponse(response);
       return ResponseResult.success(data: baseResponseData);
-    } on DioError catch (dioError) {
-      final exception = _handleDioError(dioError);
+    } on DioException catch (dioException) {
+      final exception = _handleDioException(dioException);
       return ResponseResult.failure(
         message: exception.toString(),
       );
@@ -264,8 +264,8 @@ class ApiClient implements AbstractApiClient {
       );
       final baseResponseData = _parseResponse(response);
       return ResponseResult.success(data: baseResponseData);
-    } on DioError catch (dioError) {
-      final exception = _handleDioError(dioError);
+    } on DioException catch (dioException) {
+      final exception = _handleDioException(dioException);
       return ResponseResult.failure(
         message: exception.toString(),
       );
@@ -321,12 +321,12 @@ class ApiClient implements AbstractApiClient {
     }
   }
 
-  /// DioError を受けて、何かしらの Exception を return する。
+  /// DioException を受けて、何かしらの Exception を return する。
   /// 呼び出し側ではそれをスローする。
-  Exception _handleDioError(DioError dioError) {
-    final errorType = dioError.type;
-    final errorResponse = dioError.response;
-    final dynamic error = dioError.error;
+  Exception _handleDioException(DioException dioException) {
+    final errorType = dioException.type;
+    final errorResponse = dioException.response;
+    final dynamic error = dioException.error;
     if (errorType.isTimeout) {
       return const ApiTimeoutException();
     }

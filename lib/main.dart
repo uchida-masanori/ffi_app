@@ -1,19 +1,13 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 import 'util/logger.dart';
 
 void main() {
   // Flavor を取得し Logging
-  const flavor = String.fromEnvironment('FLAVOR');
+  const flavor = String.fromEnvironment('flavor');
   logger.i('FLAVOR : $flavor');
 
-  runApp(
-    DevicePreview(
-      enabled: const bool.fromEnvironment('PREVIEW'),
-      builder: (context) => const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

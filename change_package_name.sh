@@ -29,6 +29,6 @@ else
     echo フォルダ変更完了
     # iOSのバンドルIDの変更
     # Xcodeで変更する場合も、変更箇所は一箇所だけ
-    sed -i "" -E s/PRODUCT_BUNDLE_IDENTIFIER" = .*"/PRODUCT_BUNDLE_IDENTIFIER" = $1;"/g ./ios/Runner.xcodeproj/project.pbxproj
+    sed -i "" -E s/PRODUCT_BUNDLE_IDENTIFIER" = .*"/PRODUCT_BUNDLE_IDENTIFIER" = \"$1\$(appIdSuffix)\";"/g ./ios/Runner.xcodeproj/project.pbxproj
     echo バンドルID変更完了
 fi
