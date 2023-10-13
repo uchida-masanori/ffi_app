@@ -116,11 +116,6 @@ VSCode用の設定は追加済みである。
 ### 環境分け
 環境は以下を参考に`dev`（開発）と`prod`（本番）で分けています。  
 [FlutterでDart-define-from-fileを使って開発環境と本番環境を分ける](https://zenn.dev/riscait/articles/separating-environments-in-flutter) 
-  
-iOSのbuildを実行するため、以下のスクリプトに実行権限を与えてください。  
-```console
-$ chmod 755 ios/script/retrieve_dart_defines.sh
-```
 
 ## 実行・ビルド方法
 
