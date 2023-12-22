@@ -21,6 +21,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // アプリ内文字サイズを固定（本体設定の影響を受けない）
+      builder: (context, child) => MediaQuery.withNoTextScaling(child: child!),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
