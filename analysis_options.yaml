@@ -3,6 +3,8 @@ include: package:pedantic_mono/analysis_options.yaml
 # Explicitly disable only the rules we do not want.
 linter:
   rules:
+    # 相対インポートを優先する。
+    prefer_relative_imports: true
     # Some explanation why we don't want this lint
     avoid_classes_with_only_static_members: false
 

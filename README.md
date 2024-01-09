@@ -75,14 +75,86 @@ $ git remote -v
   
 あとは新しいリポジトリにpushできればOK  
   
-## 事前追加している実装
+## 事前追加している実装・対応
+  
+以下、本プロジェクトにて実装済みの内容について記載する。
+変更が必要な場合は、案件ごとに変更すること。
+  
+### lintの設定  
+[pedantic_mono](https://pub.dev/packages/pedantic_mono)を採用。versionはanyとしている。  
+変更可否の判断基準 : 外的要因で指定がある場合。それ以外は変更しないことを推奨。  
+該当コミット : [a872](https://github.com/docodoor-inc/app_initial_settings_project/commit/a87281c31a30e34311dc6f1bf7af7d3d4c21374a)
+  
+### 輸出コンプライアンスの設定  
+  
+暗号化を使用していない、もしくは免除の対象になる暗号化のみを使用していることを示す。　
+Appleのストアでの操作を楽にできる。([参考](https://tommy10344.hatenablog.com/entry/2020/04/29/025809))  
+免除の対象になる暗号化 : HTTPSや、OSに組み込まれた標準の暗号化  
+変更可否の判断基準 : 免除の対象になる暗号化以外を使用している場合。※ 2023/1/5時点では、弊社実績なし。  
+該当コミット : [e7b0](https://github.com/docodoor-inc/app_initial_settings_project/commit/e7b0d47a7e895f5ae4663f9cd127e4a804726751)
+  
+### パッケージのimport方法を自動で修正する設定
+  
+相対パス・絶対パスを使い分けるようにしており、人力でやるとミスが発生するので自動でimport方法を修正するように追加した。  
+「相対パス・絶対パスを使い分ける」方針にしたのは以下の公式ガイドが参考。  
+[PREFER relative import paths](https://dart.dev/effective-dart/usage#prefer-relative-import-paths)  
+  
+変更可否の判断基準 : 「絶対パス」で統一する指定がある場合など。  
+該当コミット : [7637](https://github.com/docodoor-inc/app_initial_settings_project/commit/7637091b4cc4237bc89655087c3865113def33bc)
+  
+上記コミットでは`analysis_options.yaml`の設定不足があったので注意。  
+※ `prefer_relative_imports: true` が必要。  
+  
+### 縦向き固定
+  
+対応方法の参考 : https://gist.github.com/blendthink/7529efc701be36b9bd1f3a9b55570225  
+iPadは横向きにしてもある程度縦幅があるので、未対応としている。  
+※ 「Support Split Screen Multitasking」観点からも、Apple公式では横向きの対応が推奨されている認識。  
+  
+参考 : [Support Split Screen Multitaskingの話](https://qiita.com/sussan0416/items/4b5f390711de1675a66b#support-split-screen-multitasking%E3%81%A8%E6%A8%AA%E7%94%BB%E9%9D%A2%E5%AF%BE%E5%BF%9C)  
+  
+※ iPadも縦向き固定する場合  
+Xcode上でiPadの設定で「Requires full screen」をチェック  
+main上で以下を実行。  
+（検証した限り両方とも実装することで、iPadの縦向き固定ができる）  
+  
+```dart
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+```
+  
+検証時の別プロジェクトのプルリク : [ocrimagegenのプルリク](https://github.com/docodoor-inc/ocrimagegen/pull/40#issuecomment-1855049814)
+  
+変更可否の判断基準 : 横向きの対応が必要な場合  
+該当コミット（複数の対応が入っている） : [d908](https://github.com/docodoor-inc/app_initial_settings_project/commit/d908e27029d4af66bca04540cdec7207f2a3de49)  
+  
+### Appleの対応言語に日本語を追加
+  
+Apple Storeで言語表示を「日本語」にするには本対応が必要。
+最低限の対応しかしていない。  
+参考 : https://eda-inc.jp/post-4472/  
+注意 言語ごとにATTを設定する場合は、対応言語のファイルに記載する必要がある。（日本語のみの場合は`info.plist`のみの記載でも最悪可能）  
+  
+変更可否の判断基準 : 対応言語に日本語がない  
+該当コミット（複数の対応が入っている） : [d908](https://github.com/docodoor-inc/app_initial_settings_project/commit/d908e27029d4af66bca04540cdec7207f2a3de49)  
+  
+### 文字サイズ固定
+  
+ドコドアとして、文字サイズ固定することに決定したため設定している。  
+※ 文字サイズを固定しない場合、別途見積もりとしやすくするため。  
+  
+変更可否の判断基準 : 文字サイズ固定しない場合  
+該当コミット（複数の対応が入っている） : [d908](https://github.com/docodoor-inc/app_initial_settings_project/commit/d908e27029d4af66bca04540cdec7207f2a3de49)  
+  
+### Dioの実装
 
-[Dioの実装](./lib/api/)  
+[フォルダ](./lib/api/)  
 
 元々の参考  
 https://github.com/KosukeSaigusa/flutterfire-commons/tree/main/packages/routing_with_riverpod/example  
   
-※ APIとのやりとりがない場合は削除推奨。  
+変更可否の判断基準 : APIとのやりとりがない場合は削除推奨。  
   
 また[base_response_data](./lib/api/model/base_response_data/base_response_data.dart)は要件によって変えた方がいいかもしれない。  
 ※ 現状そのままmainにデータ入れている。「参考」の実装などでは「message」はどのAPIでも存在する想定で作成されている。
