@@ -8,25 +8,27 @@
             "program": "lib/main.dart",
             "flutterMode": "debug",
             "args": [
-                "--dart-define-from-file=dart_defines/dev.json"
+                "--dart-define=FLAVOR=dev"
             ]
         },
         {
             "name": "Run prod debug",
             "request": "launch",
             "type": "dart",
+            "program": "lib/main.dart",
             "flutterMode": "debug",
             "args": [
-                "--dart-define-from-file=dart_defines/prod.json"
+                "--dart-define=FLAVOR=prod"
             ]
         },
         {
             "name": "Run prod release",
             "request": "launch",
             "type": "dart",
+            "program": "lib/main.dart",
             "flutterMode": "release",
             "args": [
-                "--dart-define-from-file=dart_defines/prod.json"
+                "--dart-define=FLAVOR=prod"
             ]
         }
     ]

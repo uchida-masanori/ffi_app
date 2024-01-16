@@ -4,7 +4,7 @@ import 'util/logger.dart';
 
 void main() {
   // Flavor を取得し Logging
-  const flavor = String.fromEnvironment('flavor');
+  const flavor = String.fromEnvironment('FLAVOR');
   logger.i('FLAVOR : $flavor');
 
   runApp(const MyApp());
