@@ -1,4 +1,4 @@
-package jp.co.docodoor.app
+package ffi.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -57,7 +57,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "jp.co.docodoor.app"
+        applicationId "ffi.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 19
@@ -70,7 +70,7 @@ android {
             applicationIdSuffix ".${dartEnvironmentVariables.FLAVOR}"
         }
         // アプリ名を環境ごとに変更
-        resValue "string", "app_name", "アプリ名" +
+        resValue "string", "app_name", "dart_ffi_app" +
                 (dartEnvironmentVariables.FLAVOR == 'prod' ? '' : ".${dartEnvironmentVariables.FLAVOR}")
     }
 
