@@ -55,6 +55,13 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    externalNativeBuild {
+        // CMakeLists.txtからcmakeを実行
+        cmake{
+            path "CMakeLists.txt"
+        }
+    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "ffi.app"
